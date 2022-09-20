@@ -1,0 +1,115 @@
+---
+title: "123200103_Ardi Sasongko"
+author: "Ardi Sasongko"
+date: "2022-09-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dslabs)
+library(tibble)
+library(datasets)
+```
+
+## Modul 3
+
+
+
+## Nomor 1
+```{r}
+data(murders)
+str(murders)
+as_tibble(murders)
+```
+## Nomor 2
+```{r}
+names(murders)
+```
+
+## Nomor 3
+```{r}
+a = (murders$abb)
+as_tibble(a)
+class(a)
+```
+
+## Nomor 4
+```{r}
+b = murders$abb[51]
+class(b)
+```
+
+## Nomor 5
+```{r}
+class(murders$region)
+length(murders$region)
+levels(murders$region)
+```
+
+## Nomor 6
+```{r}
+c = murders$state
+d = murders$region
+table(c,d)
+
+```
+
+## Modul 4
+
+## Nomor 1
+```{r}
+pop = murders$population
+sort(pop)
+```
+
+## Nomor 2
+```{r}
+x = order(murders$population)
+print(x[1])
+```
+
+## Nomor 3
+```{r}
+which.min(murders$population)
+```
+
+## Nomor 4
+```{r}
+x = murders$population
+murders$state[which.min(x)]
+```
+
+## Nomor 5
+```{r}
+ranks = rank(murders$population)
+my_df = data.frame(Negara = murders$state, Peringkat = ranks)
+my_df
+```
+
+## Nomor 6
+```{r}
+ranks <- rank(murders$population)
+my_df = data.frame(Negara = murders$state, Peringkat = ranks)
+ind = my_df[order(my_df$Peringkat),]
+ind
+```
+
+## Nomor 7
+```{r}
+population_in_millions = log10(murders$population)
+total_gun_murders = murders$total
+plot(population_in_millions, total_gun_murders)
+```
+
+## Nomor 8
+```{r}
+population_in_millions = log10(murders$population)
+hist(population_in_millions, main="Histogram State Population")
+```
+
+## Nomor 9
+```{r}
+murders$boxplot = with(murders, log10(population))
+boxplot(boxplot~region, data = murders)
+```
