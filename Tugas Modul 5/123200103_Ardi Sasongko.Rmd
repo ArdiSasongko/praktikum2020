@@ -1,0 +1,66 @@
+---
+title: "Tugas Modul 5"
+author: "Ardi Sasongko"
+date: "2022-09-26"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r loading-libs, message=FALSE}
+library(dslabs)
+data("murders")
+str(murders)
+```
+
+## Modul 5
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+## Nomor 1
+```{r}
+new_names = ifelse(nchar(murders$state) < 8, murders$state, murders$abb)
+new_names
+```
+
+## Nomor 2
+```{r}
+sum_n = function(n){
+  j = 1:n
+  j = j %% 2 
+  print(sum(j))
+}
+sum_n(5000)
+```
+
+## Nomor 3
+```{r}
+compute_s_n = function(n){
+  x = 1:n
+  x = x^2
+  print(sum(x))
+}
+compute_s_n(10)
+```
+
+## Nomor 4
+```{r}
+s_n = vector("numeric",25)
+for(n in 1:25){
+  s_n[n] = compute_s_n(n)
+}
+```
+
+## Nomor 5
+```{r}
+s_n <- sapply(1:25, compute_s_n)
+s_n
+```
