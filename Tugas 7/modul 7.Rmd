@@ -1,0 +1,70 @@
+---
+title: "Modul 7"
+author: "Ardi Sasongko"
+date: "2022-11-01"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+library(tidyverse)
+library(tibble)
+library(dslabs)
+data(murders)
+```
+
+## Nomor 1
+
+```{r}
+murders_tibble = as_tibble(murders)
+```
+
+## Nomor 2
+```{r}
+as_tibble(murders) %>% group_by(region)
+```
+
+## Nomor 3
+```{r}
+murders %>% .$population %>% log %>% mean %>% exp
+```
+
+## Nomor 4
+```{r}
+a = 1
+b = 100
+n = a:b
+s_n = function(n){
+  x = a:b
+  x = x+x
+}
+s_n_2 = function(n){
+  x = a:b
+  x = x+x
+  x = x^2
+}
+my_df <- data.frame(n,s_n(n),s_n_2(n))
+my_df
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
